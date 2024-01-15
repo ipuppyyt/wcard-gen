@@ -1,7 +1,7 @@
 {
   "name": "wcard-gen",
   "description": "A welcome message generator",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "files": [
@@ -9,9 +9,6 @@
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "publishConfig": {
-    "registry":"https://npm.pkg.github.com/@ipuppyyt"
   },
   "keywords": [
     "welcome-card",
