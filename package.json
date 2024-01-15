@@ -1,5 +1,5 @@
 {
-  "name": "@xenith-org/wcard-gen",
+  "name": "@ipuppyyt/wcard-gen",
   "description": "A welcome message generator",
   "version": "1.0.0",
   "main": "build/index.js",
@@ -7,6 +7,9 @@
   "files": [
     "build"
   ],
+  "publishConfig": {
+    "@ipuppyyt:registry": "https://npm.pkg.github.com"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,14 +32,14 @@
   "author": "iPuppyYT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Xenith-Org/wcard-gen.git"
+    "url": "git+https://github.com/ipuppyyt/wcard-gen.git"
   },
   "bugs": {
-    "url": "https://github.com/Xenith-Org/wcard-gen/issues"
+    "url": "https://github.com/ipuppyyt/wcard-gen/issues"
   },
   "funding": {
     "type": "githubsponsor",
     "url": "https://github.com/sponsors/ipuppyyt"
   },
-  "homepage": "https://github.com/Xenith-Org/wcard-gen#readme"
+  "homepage": "https://github.com/ipuppyyt/wcard-gen#readme"
 }
