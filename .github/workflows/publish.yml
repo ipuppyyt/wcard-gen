@@ -19,11 +19,15 @@ jobs:
       - name: Bump
         run: node bump-version.js
 
-      - name: Merge Commit
-        run: git config user.name 'github-actions[bot]' && git config user.email 'github-actions[bot]@users.noreply.github.com' && git merge main
-          
-      - name: Commit
-         run: git remote set-url origin https://x-access-token:${{ secrets.GP_TOKEN }}@github.com/ipuppyyt/wcard-gen && git push
+      - name: Run the Action
+        uses: devops-infra/action-commit-push@master
+        with:
+          github_token: "${{ secrets.GP_TOKEN }}"
+          add_timestamp: true
+          commit_prefix: "[AUTO]"
+          commit_message: "Automatic commit"
+          force: false
+          target_branch: update/version
 
       - name: Publish package on NPM 📦 and Push to GitHub 🚀
         run: npm publish
