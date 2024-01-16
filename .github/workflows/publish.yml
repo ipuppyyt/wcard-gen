@@ -23,9 +23,8 @@ jobs:
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
- 
-# edit the package.json file in the repo to bump the version
-      -name: Commit package.json
+
+      - name: Commit package.json
         run: git commit -am "Bump version"
         env:
           GITHUB_TOKEN: ${{ secrets.GP_TOKEN }}
