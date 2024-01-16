@@ -1,7 +1,7 @@
 const { createCanvas, loadImage, GlobalFonts } = require("@napi-rs/canvas");
 
-GlobalFonts.registerFromPath("node_modules/@xenith-org/wcard-gen/build/structures/font/Montserrat-Black.ttf", "montserrat-black")
-GlobalFonts.registerFromPath("node_modules/@xenith-org/wcard-gen/build/structures/font/Montserrat-ExtraLight.ttf", "montserrat-extra-light")
+GlobalFonts.registerFromPath("node_modules/wcard-gen/build/structures/font/Montserrat-Black.ttf", "montserrat-black")
+GlobalFonts.registerFromPath("node_modules/wcard-gen/build/structures/font/Montserrat-ExtraLight.ttf", "montserrat-extra-light")
 
 const defaultAssets = {
     shadow: "https://s6.imgcdn.dev/Zqmpi.png",
