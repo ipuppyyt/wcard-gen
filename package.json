@@ -1,7 +1,7 @@
 {
   "name": "wcard-gen",
   "description": "A welcome image generator npm package.",
-  "version": "2.0.20",
+  "version": "2.0.22",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "files": [

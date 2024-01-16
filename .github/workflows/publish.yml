@@ -16,15 +16,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Publish package on NPM 📦
+      - name: Publish package on NPM 📦 and Push to GitHub 🚀
         run: node bump-version.js && npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - name: Commit package.json
         uses: stefanzweifel/git-auto-commit-action@v5
         env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
           GITHUB_TOKEN: ${{ secrets.GP_TOKEN }}
+
 
       
 
