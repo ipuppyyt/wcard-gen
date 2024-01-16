@@ -19,7 +19,7 @@ jobs:
       - name: Bump
         run: node bump-version.js
 
-        - name: Merge
+      - name: Merge Commit
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email 'github-actions[bot]@users.noreply.github.com'
@@ -27,8 +27,8 @@ jobs:
           
       - name: Commit
          run: |
-          git remote set-url origin https://x-access-token:${{ secrets.GP_TOKEN }}@github.com/ipuppyyt/wcard-gen
-          git push origin HEAD:main
+          git remote set-url origin https://x-access-token:${{secrets.GP_TOKEN}}@github.com/ipuppyyt/wcard-gen
+          git push
 
       - name: Publish package on NPM 📦 and Push to GitHub 🚀
         run: npm publish
