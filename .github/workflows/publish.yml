@@ -18,13 +18,17 @@ jobs:
 
       - name: Bump
         run: node bump-version.js
-        env:
-          GITHUB_TOKEN: ${{ secrets.GP_TOKEN }}
 
+        - name: Merge
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email 'github-actions[bot]@users.noreply.github.com'
+          git merge main
+          
       - name: Commit
-        uses: stefanzweifel/git-auto-commit-action@v5
-        env:
-          GITHUB_TOKEN: ${{ secrets.GP_TOKEN }}
+         run: |
+          git remote set-url origin https://x-access-token:${{ secrets.GP_TOKEN }}@github.com/ipuppyyt/wcard-gen
+          git push origin HEAD:main
 
       - name: Publish package on NPM 📦 and Push to GitHub 🚀
         run: npm publish
