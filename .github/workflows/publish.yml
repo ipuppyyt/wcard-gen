@@ -16,21 +16,13 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Get current version from NPM
-        id: current_version
-        run: echo ::set-output name=current_version::$(npm view ${{ github.repository }} version)
-
-      - name: Bump version
-        id: bump
-        run: echo ::set-output name=new_tag::$(node bump-version.js ${{ steps.current_version.outputs.current_version }})
-
       - name: Publish package on NPM 📦
         run: node bump-version.js && npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Commit package.json
-        run: git config --local user.email "dhanush6102002@gmail.com" && git config --local user.name "ipuppyyt" && git add package.json && git commit -m "Bump version to ${{ steps.bump.outputs.new_tag }}" && git push
+        uses: stefanzweifel/git-auto-commit-action@v5
         env:
           GITHUB_TOKEN: ${{ secrets.GP_TOKEN }}
 
