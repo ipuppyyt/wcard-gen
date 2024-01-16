@@ -8,8 +8,7 @@
     "build"
   ],
   "scripts": {
-    "release": "node bump-version.js && npm publish",
-    "postpublish": "node bump-version.js && npm publish --ignore-scripts --@ipuppyyt:registry='https://registry.npmjs.org'"
+    "release": "node bump-version.js && npm publish"
   },
   "keywords": [
     "welcome-card",
