@@ -16,11 +16,8 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-      - name: Bump version
-        run: node bump-version.js 
-
       - name: Publish package on NPM 📦
-        run: npm publish
+        run: node bump-version.js && npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
