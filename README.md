@@ -10,6 +10,12 @@ Install wcard-gen with npm
 ```bash
   npm i wcard-gen
 ```
+
+Install wcard-gen with yarn
+
+```bash
+  yarn add wcard-gen
+```
     
 ## Usage/Examples
 
