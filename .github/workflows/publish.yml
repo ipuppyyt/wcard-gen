@@ -11,19 +11,22 @@ jobs:
         with:
           node-version: '14.x'
           registry-url: 'https://registry.npmjs.org'
-      # - name: Install dependencies and build 🔧
-      #   run: npm i && npm ci && npm run build
+
       - name: Publish package on NPM 📦
         run: npm i && node bump-version.js && npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Create Release 🚀
-        id: create_release
-        uses: actions/create-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GP_TOKEN }}
+        
+      -name: Setup Node
+        uses: actions/setup-node@v2
         with:
-          tag_name: ${{ github.ref }}
-          release_name: Release ${{ github.ref }}
-          draft: false
-          prerelease: false
+          node-version: '14.x'
+          registry-url: 'https://npm.pkg.github.com'
+
+      -name: Install dependencies
+        run: npm install
+
+      - name: Publish package on GitHub Packages 📦
+        run: node bump-version.js && npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
