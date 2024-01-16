@@ -1,14 +1,14 @@
 {
   "name": "wcard-gen",
-  "description": "A welcome message generator",
-  "version": "1.0.3",
+  "description": "A welcome image generator npm package.",
+  "version": "1.0.7",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "files": [
     "build"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "release": "node bump-version.js && npm publish"
   },
   "keywords": [
     "welcome-card",
@@ -23,6 +23,7 @@
   },
   "devDependencies": {
     "@types/node": "^20.4.5",
+    "semver": "^7.5.4",
     "typescript": "^5.1.6"
   },
   "license": "GPL-3.0",
