@@ -1,7 +1,7 @@
 {
   "name": "wcard-gen",
   "description": "A welcome message generator",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "main": "build/index.js",
   "types": "build/index.d.ts",
   "files": [
