@@ -22,7 +22,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Commit package.json
-        run: git commit -am "Bump version"
+        run: git config --local user.email "dhanush6102002@gmail.com" && git config --local user.name "ipuppyyt" && git add package.json && git commit -m "Bump version to ${{ steps.bump.outputs.new_tag }}" && git push
         env:
           GITHUB_TOKEN: ${{ secrets.GP_TOKEN }}
 
