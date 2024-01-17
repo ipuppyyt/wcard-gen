@@ -1,7 +1,11 @@
 name: Publish to NPM
+# release on commit with name "publish"
 on: 
-  release:
-    types: [created]
+  push:
+    branches:
+      - main
+    paths:
+      - 'publish'
 jobs:
   build:
     runs-on: ubuntu-latest
