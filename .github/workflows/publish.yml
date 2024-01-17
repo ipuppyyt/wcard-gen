@@ -28,23 +28,45 @@ jobs:
           commit_message: "Bump version"
           force: true
           target_branch: bump-version
-
-      # merge to main
-      - name: Merge to main
-        uses: repo-sync/github-sync@v2
-        with:
-          source_repo: ${{ github.repository }}
-          source_branch: bump-version
-          destination_branch: main
-          github_token: ${{ secrets.GP_TOKEN }}
-
+          push_to_origin: true
+          push_to_target: true
+          
       - name: Publish package on NPM 📦 and Push to GitHub 🚀
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+  
+  commit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+          registry-url: 'https://registry.npmjs.org'
       
-
-
-      
+      # Merge the bump-version branch into main
+      - name: Merge bump-version into main
+        uses: pullreminders/merge-action@v5.0.0
+        with:
+          github_token: ${{ secrets.GP_TOKEN }}
+          merge_method: squash
+          merge_from: bump-version
+          merge_to: main
+          commit_message: "Bump version"
+          commit_author: "devops-infra <"
+          commit_author_email: "bot@bot.com"
+          commit_author_name: "devops-infra"
+          commit_body: "Bump version"
+          commit_title: "Bump version"
+          
+      # Delete the bump-version branch
+      - name: Delete bump-version branch
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GP_TOKEN }}
+          branch: bump-version
+          force: true
