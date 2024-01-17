@@ -38,15 +38,10 @@ jobs:
           github_token: "${{ secrets.GP_TOKEN }}"
           timeout_minutes: 5
 
-      - name: Merge bump version to main
-        uses: devops-infra/action-merge@master
-        with:
-          github_token: "${{ secrets.GP_TOKEN }}"
-          merge_method: "squash"
-          merge_commit_message: "Bump version"
-          merge_target: "main"
-          merge_source: "bump-version"
-          merge_force: true
+      - name: Merge branch
+         run: git merge develop
+      - name: Push to main
+         run: git push origin main
           
       - name: Publish package on NPM 📦 and Push to GitHub 🚀
         run: npm publish
