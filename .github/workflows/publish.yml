@@ -23,11 +23,11 @@ jobs:
         uses: devops-infra/action-commit-push@master
         with:
           github_token: "${{ secrets.GP_TOKEN }}"
-          add_timestamp: true
+          add_timestamp: false
           commit_prefix: "[AUTO]"
-          commit_message: "Automatic commit"
-          force: false
-          target_branch: update/version
+          commit_message: "Bump version"
+          force: true
+          target_branch: main
 
       - name: Publish package on NPM 📦 and Push to GitHub 🚀
         run: npm publish
