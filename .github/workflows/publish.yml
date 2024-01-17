@@ -27,7 +27,16 @@ jobs:
           commit_prefix: "[AUTO]"
           commit_message: "Bump version"
           force: true
-          target_branch: main
+          target_branch: bump-version
+
+      # merge to main
+      - name: Merge to main
+        uses: repo-sync/github-sync@v2
+        with:
+          source_repo: ${{ github.repository }}
+          source_branch: bump-version
+          destination_branch: main
+          github_token: ${{ secrets.GP_TOKEN }}
 
       - name: Publish package on NPM 📦 and Push to GitHub 🚀
         run: npm publish
