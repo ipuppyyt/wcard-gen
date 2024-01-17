@@ -19,7 +19,7 @@ jobs:
       - name: Bump
         run: node bump-version.js
 
-      - name: Run the Action
+      - name: Bump version commit and push
         uses: devops-infra/action-commit-push@master
         with:
           github_token: "${{ secrets.GP_TOKEN }}"
@@ -27,9 +27,26 @@ jobs:
           commit_prefix: "[AUTO]"
           commit_message: "Bump version"
           force: true
-          target_branch: main
+          target_branch: "bump-version"
           push_to_origin: true
           push_to_target: true
+
+      # wait for the commit to be pushed
+      - name: Wait for commit to be pushed
+        uses: devops-infra/wait-for-commit@master
+        with:
+          github_token: "${{ secrets.GP_TOKEN }}"
+          timeout_minutes: 5
+
+      - name: Merge bump version to main
+        uses: devops-infra/action-merge@master
+        with:
+          github_token: "${{ secrets.GP_TOKEN }}"
+          merge_method: "squash"
+          merge_commit_message: "Bump version"
+          merge_target: "main"
+          merge_source: "bump-version"
+          merge_force: true
           
       - name: Publish package on NPM 📦 and Push to GitHub 🚀
         run: npm publish
