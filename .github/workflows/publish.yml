@@ -1,5 +1,4 @@
 name: Publish to NPM
-# release on commit with name "publish"
 on: 
   push:
     branches:
