@@ -23,11 +23,9 @@ Install wcard-gen with yarn
 // Importing module
 const { Wcard } = require("wcard-gen");
 
-const name = "iPuppyYT"
-
 // Creating the card
 const welcomecard = new Wcard()
-    .setName(name)
+    .setName("iPuppyYT")
     .setAvatar('https://gravatar.com/userimage/245140636/a6f456c3200da7bdf2c013cbb0f7e819.jpeg')
     .setTitle("Welcome to Server")
     .setColor("00e5ff") // hex code without #
